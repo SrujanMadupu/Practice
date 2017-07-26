@@ -43,7 +43,10 @@ class BusinessInformationForm(forms.Form):
 		widget=forms.TextInput(attrs={'placeholder': 'zip'}))
 
 
-
+class PersonalInfo(forms.Form):
+	name = forms.CharField(max_length=120,
+		widget=forms.TextInput(attrs={'placeholder': 'Your Name'}))
+	age = forms.IntegerField(widget=forms.TextInput(attrs={'placeholder': 'Your age'}))
 
 
 

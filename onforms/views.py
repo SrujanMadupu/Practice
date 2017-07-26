@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import CreateView
 # Create your views here
 from .models import Biodata
-from .forms import CustomBioForm ,BusinessInformationForm
+from .forms import CustomBioForm ,BusinessInformationForm,PersonalInfo
 from django.forms import formset_factory
 from django.forms.formsets import BaseFormSet
 
@@ -37,11 +37,16 @@ def CustomBioView(request):
 
 	if request.method == 'POST':
 		customform = CustomBioForm(request.POST)
-		if customform.is_valid():
+		personalform = PersonalInfo(request.POST)
+		if customform.is_valid() or personalform.is_valid():
 			print(customform)
+			print(personalform)
 			return HttpResponse("your data successfully added")
 		else:
 			print("your form is not valid")
 
-	form = BusinessInformationForm
-	return render(request,'onforms/bioform.html',{'form':form})
+	context = {
+	     "bform" : BusinessInformationForm,
+	     "pform" : PersonalInfo,
+	     }
+	return render(request,'onforms/bioform.html',context)

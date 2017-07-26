@@ -1,21 +1,42 @@
 
 
+<input type='radio' name='forms' value='yes' id='b'/>
+<label for='b'>Bussiness</label>
+
+<input type='radio' name='forms' value='yes' id='p'/>
+<label for='b'>Personal</label>
+
 
 <form method="post" action="{% url 'onforms:custombio' %}" class="forms"> 
  {% csrf_token %}
 
-   {{ form.as_p }}
+    <div id="bform">
+       {{bform.as_p}}
+    </div>
+
+    <div id="pform">
+       {{pform.as_p}}
+    </div>
 
 
   <p> <input  type="submit" name="first" value="Submit"/> </p>
-
-  <p> <button id="add-another">Add another</button> </p>
   
 
  </form>
 
 
  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+alert("dasdadas");
+   $("input").click({
+    alert("hh");
+       $("#pform").hide();
+   });
+  });
+
+  </script>
 
  <script type="text/javascript">
      form_count = 0 
