@@ -1,0 +1,34 @@
+
+
+
+<form method="post" action="{% url 'onforms:custombio' %}" class="forms"> 
+ {% csrf_token %}
+
+   {{ form.as_p }}
+
+
+  <p> <input  type="submit" name="first" value="Submit"/> </p>
+
+  <p> <button id="add-another">Add another</button> </p>
+  
+
+ </form>
+
+
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+ <script type="text/javascript">
+     form_count = 0 
+  $("#add-another").click(function(){
+  	form_count++;
+  	element = $('<p> <input  name="first_name" type="text"/> </p>');
+  	element.attr('name','first_name' + form_count);
+  	$(".forms").append(element);
+
+  	$("[name=extra_field_count]").val(form_count);
+  })
+  
+
+ </script>
+
+
